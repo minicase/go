@@ -226,7 +226,7 @@ func (h *Handler) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 		internalError(err)
 		return
 	}
-
+        cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
 	err = cmd.Start()
 	if err != nil {
 		internalError(err)
